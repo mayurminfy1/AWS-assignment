@@ -1,4 +1,4 @@
-# 🛠️ AWS EC2 Web Server Setup with Custom VPC
+![image](https://github.com/user-attachments/assets/f0f7d2a4-1d7c-4f6d-ab28-1c1bfb59da46)# 🛠️ AWS EC2 Web Server Setup with Custom VPC
 
 This project walks through setting up an EC2 instance inside a custom VPC on AWS, including all necessary networking components. The EC2 instance runs a basic web server and is accessible over the internet.
 
@@ -75,7 +75,93 @@ To avoid incurring costs on your AWS account, follow these cleanup steps:
   
      ![Step 8 - Cleanup](https://github.com/mayurminfy1/AWS-assignment/blob/main/cleanup.png?raw=true)
 
+
+
+# 🧪 Take-Home Assignment - Day 1 DevOps AWS
+
+## 🏗️ Project: Build a Two-Tier Web Application Infrastructure
+
+This assignment focuses on designing a secure AWS infrastructure with a public-facing web server and a private database server.  
+The goal is to build networking, compute, and security layers using core AWS services.
+
 ---
+
+## 🚀 Architecture Overview
+
+  I will create:
+- A VPC with public and private subnets
+- A Web Server in the public subnet
+- A DB Server in the private subnet
+- Internet Gateway, Route Tables, and Security Groups for connectivity and isolation
+
+---
+
+## 🧱 Step-by-Step Execution with Screenshots
+
+### 1️⃣ Created VPC `two-tier-vpc` (CIDR: 10.10.0.0/16)  
+Custom VPC created to isolate the infrastructure and manage subnets.  
+
+
+---
+
+### 2️⃣ Created Public Subnet `public-subnet-1` (CIDR: 10.10.1.0/24)  
+Subnet created for public-facing resources like the web server.  
+
+
+---
+
+### 3️⃣ Created Private Subnet `private-subnet-1` (CIDR: 10.10.2.0/24)  
+Used for private resources like the database, with no public access.  
+
+
+---
+
+### 4️⃣ Attached Internet Gateway & Configured Route Table  
+Internet Gateway enables internet access for public subnet; route table updated.  
+
+
+---
+
+### 5️⃣ Created Security Group `webapp-sg`  
+Allows HTTP (80) from anywhere and SSH (22) from my IP only for secure access.  
+
+
+---
+
+### 6️⃣ Created Security Group `database-sg`  
+Allows MySQL (3306) access only from webapp-sg, fully blocks public access.  
+📷 ![Database SG Rules](https://github.com/mayurminfy1/Day1-aws-console/blob/main/day-1-takehome/ss3.png?raw=true)
+
+---
+
+### 7️⃣ Launched EC2 Instances (Web & DB)  
+Deployed `Web-Server` in public subnet and `DB-Server` in private subnet.  
+📷 ![EC2 Instances List](https://github.com/mayurminfy1/Day1-aws-console/blob/main/day-1-takehome/ss1.png?raw=true)
+
+---
+
+### 8️⃣ Connected via SSH to Web Server  
+SSH access to Web Server confirmed using public IP and SSH key.  
+📷 ![SSH Access](https://github.com/mayurminfy1/Day1-aws-console/blob/main/day-1-takehome/ss4.png?raw=true)
+
+---
+
+### 9️⃣ Pinged Web Server  
+  
+📷 ![Ping DB](https://github.com/mayurminfy1/Day1-aws-console/blob/main/day-1-takehome/ss5.png?raw=true)
+
+---
+
+### 🔟 Web Server Running in Browser  
+Successfully accessed the HTTP service hosted on the Web Server.  
+📷 ![Web Server Running](https://github.com/mayurminfy1/Day1-aws-console/blob/main/day-1-takehome/ss6.png?raw=true)
+
+---
+
+## 🌐 Web Server Public IP
+
+> http://13.235.0.245  
+
 
 
 
